@@ -128,11 +128,21 @@ const form = document.getElementById('astrologyForm');
 form.addEventListener('submit', (e)=>{
     e.preventDefault();
 
-    const name = document.getElementById('firstName');
-    const day = document.getElementById('')
+    const name = document.getElementById('firstName').value;
+    const surname = document.getElementById('surname').value;
+    const day = parseInt(document.getElementById('day').value);
+    const month = parseInt(document.getElementById('month').value);
+    const year = parseInt(document.getElementById('year').value);
+
+    const text = `Hi ${name} ${surname}, Your Zodiac sign is ${zodiacSigns[month-1]}.${compliments[day-1]}.${victimCardCompliments[year%20]}. ${recommendations[(day*month)%30]}.${predictions[(name.length*surname.length)%20]}`;
+
+    let result = document.getElementById('result');
+
+    result.textContent = text;
+    result.classList.add('show');
 })
 
-let result = document.getElementById('result');
+
 
 
 
